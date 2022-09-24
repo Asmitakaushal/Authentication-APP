@@ -2,6 +2,16 @@
 session_start();
 include('includes/config.php');
 
+$fullname="";
+$username="";
+$email="";
+$phone="";
+$password="";
+$confirmpassword="";
+$genders="";
+
+if(isset($_POST['register'])) 
+{
 $fullname=$_POST['fullname'];
 $username=$_POST['username'];
 $email=$_POST['email'];
@@ -9,28 +19,33 @@ $phone=$_POST['phone'];
 $password=$_POST['pass'];
 $confirmpassword=$_POST['passs'];
 $genders=$_POST['gen'];
+
+
+$value_name = "SELECT * FROM users WHERE username='$username'";
+$value_mail = "SELECT * FROM users WHERE email='$email'";
+$value_Cpass = $confirmpassword;
+$value_pass = $password;
+$result_name = mysqli_query($conn, $value_name);
+$result_mail = mysqli_query($conn, $value_mail);
+   
 if (!empty($fullname) || !empty($username) || !empty($password) || !empty($confirmpassword) || !empty($email) || !empty($phone)|| !empty($gender)) 
 {
-    if($password==$confirmpassword)
+    if($value_pass==$value_Cpass)
     {
-        $value_name = "SELECT * FROM `register` WHERE username='$username'";
-        $value_mail = "SELECT * FROM `register` WHERE email='$email'";
-        $value_pass = "SELECT * FROM `register` WHERE passs='$confirmpassword'";
-        $result_name = mysqli_query($conn, $value_name);
-        $result_mail = mysqli_query($conn, $value_mail);
+        
         if (mysqli_num_rows($result_name) > 0) {
-            echo "<script>alert('Sorry...the entered username already exists')</script>";
+            $name_error = "Sorry, the username is already taken";
         }  
         else if(mysqli_num_rows($result_mail) > 0)
         {
-            $email_error = 'Sorry...the entered email already exists';
+            $email_error = "Sorry...the entered email already exists";
         }
         else{
             $sql = "INSERT INTO users(fullname,username,passwrd,email,phone,gender) 
-            VALUES ('$fullname','$username','$password','$email','$phone','$gender')";
+            VALUES ('$fullname','$username','$password','$email','$phone','$genders')";
             if ($conn->query($sql) == TRUE) {
             echo "<script> alert('New record created successfully')</script>";
-            //header("location:account.php");
+            
             } 
             else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
@@ -38,8 +53,9 @@ if (!empty($fullname) || !empty($username) || !empty($password) || !empty($confi
         }
     }
     else
-        $value_pass = 'The entered password doesnt match';
-         
-}
+        $pass_error = 'The entered password doesnt match';
+     
+}}
 $conn->close();
+
 ?>
