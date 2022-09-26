@@ -15,7 +15,6 @@ body{
 }
 .container{
   max-width: 700px;
-  
   width: 100%;
   background-color: #fff;
   padding: 25px 30px;
@@ -36,7 +35,7 @@ body{
   height: 3px;
   width: 30px;
   border-radius: 5px;
-  background: linear-gradient(135deg, #8fa7ba, #122354);
+  background: linear-gradient(135deg, #8fa7ba,#032651);
 }
 
 .content form .user-details{
@@ -73,7 +72,7 @@ form .user-details .input-box .form-error{
 }
 .user-details .input-box input:focus,
 .user-details .input-box input:valid{
-  border-color: #122354;
+  border-color:#032651;
 }
  form .gender-details .gender-title{
   font-size: 20px;
@@ -102,7 +101,7 @@ form .user-details .input-box .form-error{
  #dot-1:checked ~ .category label .one,
  #dot-2:checked ~ .category label .two,
  #dot-3:checked ~ .category label .three{
-   background: #122354;
+   background: #032651;
    border-color: #d9d9d9;
  }
  form input[type="radio"]{
@@ -118,16 +117,16 @@ form .user-details .input-box .form-error{
    border-radius: 5px;
    border: none;
    color: #fff;
-   font-size: 18px;
+   font-size: 25px;
    font-weight: 500;
    letter-spacing: 1px;
    cursor: pointer;
    transition: all 0.3s ease;
-   background: linear-gradient(135deg, #8fa7ba, #122354);
+   background: linear-gradient(135deg, #8fa7ba, #032651);
  }
  form .button input:hover{
   /* transform: scale(0.99); */
-  background: linear-gradient(-135deg, #8fa7ba, #122354);
+  background: linear-gradient(-135deg, #8fa7ba, #032651);
   }
  @media(max-width: 584px){
  .container{
