@@ -45,7 +45,7 @@ if (!empty($fullname) || !empty($username) || !empty($password) || !empty($confi
             VALUES ('$fullname','$username','$password','$email','$phone','$genders')";
             if ($conn->query($sql) == TRUE) {
             echo "<script> alert('New record created successfully')</script>";
-            
+            header("Location:login.php");
             } 
             else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
